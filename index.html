@@ -1,0 +1,1308 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蚂蚁bt搜索 - 资源检索视频品牌,品质内容生态</title>
+<meta name="description" content="蚂蚁bt搜索官方网站，深耕资源检索与数字内容垂直领域，以专业、高清、原创的影像与教程内容，为创作者与企业搭建值得信赖的内容生态。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2a2e'/%3E%3Cpath d='M14 30h14v8H14zM36 30h14v8H36zM30 18h4v28h-4z' fill='%2335d0b0'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23f2b544'/%3E%3C/svg%3E">
+<style>
+:root{
+  --abt-ink:#0f2a2e;
+  --abt-ink-2:#123b40;
+  --abt-mint:#35d0b0;
+  --abt-mint-soft:#d9f5ee;
+  --abt-amber:#f2b544;
+  --abt-paper:#f6f8f7;
+  --abt-card:#ffffff;
+  --abt-line:#dde6e4;
+  --abt-text:#22302f;
+  --abt-muted:#5d706e;
+  --abt-shadow:0 10px 30px rgba(15,42,46,.08);
+  --abt-radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+  color:var(--abt-text);background:var(--abt-paper);line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+.abt-wrap{width:min(1180px,92vw);margin:0 auto}
+
+/* 吸顶容器 */
+.abt-sticky{position:sticky;top:0;z-index:80}
+.abt-notice{
+  background:linear-gradient(90deg,var(--abt-ink),var(--abt-ink-2));
+  color:#d7efe9;font-size:13px;letter-spacing:.2px;
+  display:flex;align-items:center;gap:10px;
+  padding:9px 0;
+}
+.abt-notice .abt-wrap{display:flex;align-items:center;gap:12px;overflow:hidden}
+.abt-notice-tag{
+  flex:0 0 auto;background:var(--abt-mint);color:var(--abt-ink);
+  font-weight:700;font-size:11px;padding:2px 9px;border-radius:20px;letter-spacing:1px;
+}
+.abt-notice-track{overflow:hidden;flex:1}
+.abt-notice-text{
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#e6f6f2;
+}
+.abt-notice-text b{color:var(--abt-amber);font-weight:700}
+
+.abt-header{background:rgba(246,248,247,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--abt-line)}
+.abt-header .abt-wrap{display:flex;align-items:center;gap:26px;height:70px}
+.abt-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:var(--abt-ink);letter-spacing:.5px}
+.abt-logo-mark{
+  width:36px;height:36px;border-radius:10px;background:var(--abt-ink);
+  display:grid;place-items:center;flex:0 0 auto;
+}
+.abt-logo-mark svg{width:22px;height:22px}
+.abt-nav{display:flex;gap:4px;margin-left:8px;flex:1}
+.abt-nav a{
+  font-size:14.5px;color:var(--abt-muted);padding:8px 12px;border-radius:9px;
+  transition:.2s;white-space:nowrap;
+}
+.abt-nav a:hover,.abt-nav a.abt-active{color:var(--abt-ink);background:var(--abt-mint-soft);font-weight:600}
+.abt-search{display:flex;align-items:center;background:#fff;border:1px solid var(--abt-line);border-radius:10px;padding:5px 5px 5px 14px;gap:6px;transition:.2s}
+.abt-search:focus-within{border-color:var(--abt-mint);box-shadow:0 0 0 3px rgba(53,208,176,.15)}
+.abt-search input{border:none;outline:none;width:150px;font-size:13.5px;color:var(--abt-text);background:transparent}
+.abt-search button{background:var(--abt-ink);color:#fff;border-radius:7px;padding:6px 12px;font-size:13px;transition:.2s}
+.abt-search button:hover{background:var(--abt-mint);color:var(--abt-ink);font-weight:700}
+.abt-search-tip{
+  font-size:12px;color:var(--abt-muted);margin-top:6px;min-height:18px;
+  background:var(--abt-mint-soft);display:none;padding:5px 10px;border-radius:8px;
+}
+.abt-search-tip.abt-show{display:block}
+.abt-burger{display:none;font-size:22px;color:var(--abt-ink);padding:6px}
+
+/* 首屏 */
+.abt-hero{padding:64px 0 54px;background:
+  radial-gradient(1100px 420px at 88% -8%,rgba(53,208,176,.22),transparent 60%),
+  radial-gradient(760px 340px at 6% 106%,rgba(242,181,68,.16),transparent 60%),
+  var(--abt-paper);}
+.abt-hero-grid{display:grid;grid-template-columns:6fr 5fr;gap:48px;align-items:center}
+.abt-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--abt-line);
+  color:var(--abt-ink-2);font-size:12.5px;font-weight:700;letter-spacing:1.5px;
+  padding:6px 14px;border-radius:20px;margin-bottom:18px;
+}
+.abt-eyebrow span{width:7px;height:7px;border-radius:50%;background:var(--abt-mint);display:inline-block}
+h1.abt-h1{
+  font-size:clamp(34px,4.4vw,54px);line-height:1.15;letter-spacing:1px;color:var(--abt-ink);
+  font-weight:900;margin-bottom:16px;
+}
+h1.abt-h1 em{font-style:normal;color:var(--abt-mint);position:relative}
+.abt-hero-slogan{font-size:17px;color:var(--abt-ink-2);font-weight:600;margin-bottom:14px}
+.abt-hero-desc{font-size:14.8px;color:var(--abt-muted);max-width:560px;margin-bottom:24px}
+.abt-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.abt-btn{
+  display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:11px;
+  font-size:14.5px;font-weight:700;transition:.22s;letter-spacing:.4px;
+}
+.abt-btn-primary{background:var(--abt-ink);color:#fff;box-shadow:0 8px 18px rgba(15,42,46,.22)}
+.abt-btn-primary:hover{background:var(--abt-mint);color:var(--abt-ink);transform:translateY(-2px)}
+.abt-btn-ghost{background:#fff;color:var(--abt-ink);border:1.5px solid var(--abt-line)}
+.abt-btn-ghost:hover{border-color:var(--abt-mint);color:var(--abt-ink-2);transform:translateY(-2px)}
+.abt-hero-stats{display:flex;gap:32px;flex-wrap:wrap}
+.abt-stat b{display:block;font-size:26px;color:var(--abt-ink);letter-spacing:.5px;line-height:1.2}
+.abt-stat span{font-size:12.5px;color:var(--abt-muted)}
+.abt-hero-visual{position:relative}
+.abt-hero-visual .abt-frame{
+  border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(15,42,46,.24);
+  border:1px solid rgba(255,255,255,.6);
+}
+.abt-hero-badge{
+  position:absolute;left:-16px;bottom:26px;background:#fff;border-radius:13px;
+  padding:12px 16px;box-shadow:var(--abt-shadow);display:flex;align-items:center;gap:10px;
+  border:1px solid var(--abt-line);
+}
+.abt-hero-badge i{
+  width:34px;height:34px;border-radius:9px;background:var(--abt-mint-soft);
+  display:grid;place-items:center;font-style:normal;font-size:16px;
+}
+.abt-hero-badge b{display:block;font-size:13.5px;color:var(--abt-ink)}
+.abt-hero-badge small{font-size:11.5px;color:var(--abt-muted)}
+
+/* 通用section */
+.abt-section{padding:70px 0}
+.abt-section.abt-alt{background:#eef5f3}
+.abt-sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:36px;flex-wrap:wrap}
+.abt-sec-head h2{font-size:clamp(24px,2.6vw,32px);color:var(--abt-ink);letter-spacing:.5px;font-weight:800}
+.abt-sec-head h2 small{display:block;font-size:13px;font-weight:600;color:var(--abt-mint);letter-spacing:2.4px;margin-bottom:6px}
+.abt-sec-head p{font-size:14px;color:var(--abt-muted);max-width:520px}
+.abt-link-more{font-size:14px;color:var(--abt-ink-2);font-weight:700;border-bottom:2px solid var(--abt-mint);padding-bottom:2px}
+
+/* 焦点 */
+.abt-focus-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:22px}
+.abt-vcard{background:var(--abt-card);border-radius:var(--abt-radius);overflow:hidden;border:1px solid var(--abt-line);transition:.25s;display:flex;flex-direction:column}
+.abt-vcard:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(15,42,46,.14)}
+.abt-cover{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f2a2e}
+.abt-cover img{width:100%;height:100%;object-fit:cover}
+.abt-cover-tag{
+  position:absolute;top:12px;left:12px;background:rgba(15,42,46,.82);color:#d9f5ee;
+  font-size:11.5px;padding:3px 10px;border-radius:20px;font-weight:600;letter-spacing:.5px;backdrop-filter:blur(4px);
+}
+.abt-play{
+  position:absolute;inset:0;margin:auto;width:52px;height:52px;border-radius:50%;
+  background:rgba(255,255,255,.9);display:grid;place-items:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);transition:.25s;
+}
+.abt-play::after{content:"";width:0;height:0;border-left:16px solid var(--abt-ink);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+.abt-vcard:hover .abt-play{transform:scale(1.1);background:var(--abt-mint)}
+.abt-vbody{padding:18px 20px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.abt-vbody h3{font-size:16.5px;color:var(--abt-ink);line-height:1.45;font-weight:700}
+.abt-vmeta{font-size:12.5px;color:var(--abt-muted);display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.abt-vmeta .abt-dot{width:3px;height:3px;border-radius:50%;background:var(--abt-line)}
+.abt-vtags{display:flex;gap:6px;flex-wrap:wrap}
+.abt-vtags span{font-size:11.5px;color:var(--abt-ink-2);background:var(--abt-mint-soft);padding:2px 9px;border-radius:6px}
+.abt-side-list{display:flex;flex-direction:column;gap:16px}
+.abt-vcard.abt-h{flex-direction:row}
+.abt-vcard.abt-h .abt-cover{width:42%;aspect-ratio:16/10;flex:0 0 auto}
+.abt-vcard.abt-h .abt-vbody{padding:14px 16px}
+
+/* 视频流 */
+.abt-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.abt-actions{display:flex;gap:10px;margin-top:auto;padding-top:10px;border-top:1px dashed var(--abt-line)}
+.abt-act{font-size:12.5px;color:var(--abt-muted);display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border-radius:7px;transition:.2s}
+.abt-act:hover{background:var(--abt-mint-soft);color:var(--abt-ink)}
+.abt-act.abt-on{color:#d9534f;font-weight:700}
+.abt-act.abt-saved{color:var(--abt-ink);font-weight:700;background:var(--abt-mint-soft)}
+
+/* 专题 */
+.abt-topics{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.abt-topic{
+  position:relative;border-radius:var(--abt-radius);overflow:hidden;min-height:220px;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:20px;color:#fff;
+  border:1px solid rgba(0,0,0,.05);transition:.25s;
+}
+.abt-topic:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,42,46,.2)}
+.abt-topic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.abt-topic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,42,46,.05) 20%,rgba(15,42,46,.86));z-index:1}
+.abt-topic>*{position:relative;z-index:2}
+.abt-topic .abt-topic-state{font-size:11.5px;background:var(--abt-amber);color:var(--abt-ink);padding:2px 9px;border-radius:20px;font-weight:700;align-self:flex-start;margin-bottom:auto}
+.abt-topic h3{font-size:18px;margin-top:14px}
+.abt-topic p{font-size:12.8px;color:#cfe5e1;margin-top:5px}
+
+/* 创作者 */
+.abt-creators{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.abt-creator{
+  background:var(--abt-card);border:1px solid var(--abt-line);border-radius:var(--abt-radius);
+  padding:22px 18px;text-align:center;transition:.25s;cursor:pointer;
+}
+.abt-creator:hover{transform:translateY(-4px);box-shadow:var(--abt-shadow);border-color:var(--abt-mint)}
+.abt-avatar{
+  width:64px;height:64px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;
+  font-size:24px;font-weight:800;color:#fff;letter-spacing:1px;
+}
+.abt-creator h3{font-size:15.5px;color:var(--abt-ink);margin-bottom:2px}
+.abt-creator .abt-field{font-size:12px;color:var(--abt-mint);font-weight:700;margin-bottom:8px}
+.abt-creator p{font-size:12.5px;color:var(--abt-muted);line-height:1.6;margin-bottom:10px}
+.abt-creator .abt-cstat{display:flex;justify-content:center;gap:16px;font-size:11.5px;color:var(--abt-muted);border-top:1px dashed var(--abt-line);padding-top:10px}
+.abt-creator .abt-cstat b{display:block;color:var(--abt-ink);font-size:14px}
+
+/* 故事 */
+.abt-stories{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.abt-story{background:#fff;border-left:4px solid var(--abt-mint);border-radius:10px;padding:22px}
+.abt-story h3{font-size:16px;color:var(--abt-ink);margin-bottom:8px}
+.abt-story p{font-size:13.5px;color:var(--abt-muted)}
+.abt-story .abt-smeta{font-size:12px;color:var(--abt-mint);font-weight:700;margin-top:12px}
+
+/* 评价 */
+.abt-reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.abt-review{background:#fff;border:1px solid var(--abt-line);border-radius:var(--abt-radius);padding:20px;transition:.2s}
+.abt-review:hover{box-shadow:var(--abt-shadow)}
+.abt-rhead{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.abt-rhead .abt-avatar{width:38px;height:38px;font-size:15px;margin:0}
+.abt-rhead b{font-size:13.5px;color:var(--abt-ink);display:block}
+.abt-rhead small{font-size:11.5px;color:var(--abt-muted)}
+.abt-review p{font-size:13.3px;color:var(--abt-text)}
+.abt-stars{color:var(--abt-amber);font-size:13px;letter-spacing:2px}
+
+/* 榜单 */
+.abt-board{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.abt-board-card{background:#fff;border-radius:var(--abt-radius);padding:22px;border:1px solid var(--abt-line)}
+.abt-board-card h3{font-size:16px;color:var(--abt-ink);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.abt-board-card h3 span{font-size:11.5px;color:var(--abt-mint);font-weight:700}
+.abt-rank{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px dashed var(--abt-line);font-size:13.5px}
+.abt-rank:last-child{border-bottom:none}
+.abt-rank i{font-style:normal;width:22px;height:22px;border-radius:6px;background:var(--abt-mint-soft);color:var(--abt-ink-2);display:grid;place-items:center;font-size:12px;font-weight:800;flex:0 0 auto}
+.abt-rank:nth-child(2) i{background:var(--abt-amber);color:var(--abt-ink)}
+.abt-rank b{font-weight:600;color:var(--abt-text);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.abt-rank em{font-style:normal;font-size:12px;color:var(--abt-muted)}
+
+/* 动态 */
+.abt-timeline{position:relative;padding-left:26px}
+.abt-timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--abt-line)}
+.abt-tl-item{position:relative;padding-bottom:24px}
+.abt-tl-item:last-child{padding-bottom:0}
+.abt-tl-item::before{
+  content:"";position:absolute;left:-26px;top:6px;width:16px;height:16px;border-radius:50%;
+  background:#fff;border:3px solid var(--abt-mint);
+}
+.abt-tl-item h3{font-size:15.5px;color:var(--abt-ink);margin-bottom:4px}
+.abt-tl-item p{font-size:13.5px;color:var(--abt-muted)}
+.abt-tl-item time{font-size:12px;color:var(--abt-mint);font-weight:700}
+
+/* 合作 */
+.abt-partners{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.abt-partner{
+  background:#fff;border:1px solid var(--abt-line);border-radius:10px;padding:18px 10px;
+  text-align:center;font-size:13px;font-weight:700;color:var(--abt-muted);letter-spacing:.5px;transition:.2s;
+}
+.abt-partner:hover{color:var(--abt-ink);border-color:var(--abt-mint);background:var(--abt-mint-soft)}
+
+/* FAQ */
+.abt-faq{max-width:880px;margin:0 auto}
+.abt-faq details{background:#fff;border:1px solid var(--abt-line);border-radius:10px;margin-bottom:12px;padding:16px 20px;transition:.2s}
+.abt-faq details[open]{border-color:var(--abt-mint);box-shadow:var(--abt-shadow)}
+.abt-faq summary{font-size:15px;font-weight:700;color:var(--abt-ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.abt-faq summary::-webkit-details-marker{display:none}
+.abt-faq summary::after{content:"+";color:var(--abt-mint);font-size:20px;font-weight:400;line-height:1}
+.abt-faq details[open] summary::after{content:"−"}
+.abt-faq details p{font-size:13.8px;color:var(--abt-muted);margin-top:10px}
+
+/* 联系 */
+.abt-contact{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.abt-contact h2{font-size:28px;color:var(--abt-ink);margin-bottom:12px}
+.abt-contact p{font-size:14.5px;color:var(--abt-muted);margin-bottom:20px}
+.abt-contact-list{display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--abt-text)}
+.abt-contact-list span{color:var(--abt-mint);font-weight:700;margin-right:8px}
+.abt-cta-box{background:var(--abt-ink);border-radius:18px;padding:34px;color:#d7efe9}
+.abt-cta-box h3{font-size:20px;color:#fff;margin-bottom:8px}
+.abt-cta-box p{font-size:13.5px;color:#a9c8c3;margin-bottom:18px}
+.abt-cta-box input{width:100%;padding:11px 14px;border-radius:9px;border:none;outline:none;font-size:14px;margin-bottom:10px}
+.abt-cta-box button{width:100%;background:var(--abt-mint);color:var(--abt-ink);font-weight:800;font-size:14.5px;padding:11px;border-radius:9px;transition:.2s}
+.abt-cta-box button:hover{background:var(--abt-amber)}
+
+/* 正文解析 */
+.abt-about{padding:70px 0;background:#fff;border-top:1px solid var(--abt-line);border-bottom:1px solid var(--abt-line)}
+.abt-about-inner{max-width:960px;margin:0 auto}
+.abt-about h2{font-size:30px;color:var(--abt-ink);margin-bottom:8px}
+.abt-about .abt-sub{font-size:13px;letter-spacing:2.5px;color:var(--abt-mint);font-weight:700;margin-bottom:24px}
+.abt-about h3{font-size:19px;color:var(--abt-ink);margin:28px 0 10px;padding-left:12px;border-left:4px solid var(--abt-mint)}
+.abt-about p{font-size:14.8px;color:#3a4a48;margin-bottom:14px;text-align:justify}
+
+/* 页脚 */
+.abt-footer{background:var(--abt-ink);color:#a9c8c3;padding:56px 0 24px}
+.abt-footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+.abt-footer .abt-logo{color:#fff;margin-bottom:14px}
+.abt-footer .abt-logo-mark{background:var(--abt-mint)}
+.abt-footer p{font-size:13px;line-height:1.8}
+.abt-footer h4{color:#fff;font-size:14.5px;margin-bottom:14px;letter-spacing:.5px}
+.abt-footer ul{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:13px}
+.abt-footer ul a:hover{color:var(--abt-mint)}
+.abt-footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;display:flex;justify-content:space-between;gap:16px;font-size:12.5px;flex-wrap:wrap}
+
+/* 回到顶部 */
+.abt-top{
+  position:fixed;right:24px;bottom:24px;width:46px;height:46px;border-radius:50%;
+  background:var(--abt-ink);color:#fff;display:grid;place-items:center;font-size:18px;
+  box-shadow:0 10px 24px rgba(15,42,46,.28);opacity:0;visibility:hidden;transition:.25s;z-index:90;
+}
+.abt-top.abt-show{opacity:1;visibility:visible}
+.abt-top:hover{background:var(--abt-mint);color:var(--abt-ink)}
+
+/* Toast & Modal */
+.abt-toast{
+  position:fixed;left:50%;bottom:40px;transform:translate(-50%,20px);
+  background:var(--abt-ink);color:#fff;font-size:13.5px;padding:10px 22px;border-radius:24px;
+  box-shadow:0 12px 30px rgba(0,0,0,.25);opacity:0;visibility:hidden;transition:.3s;z-index:200;
+}
+.abt-toast.abt-show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.abt-mask{
+  position:fixed;inset:0;background:rgba(15,42,46,.55);backdrop-filter:blur(3px);
+  display:none;place-items:center;z-index:150;padding:20px;
+}
+.abt-mask.abt-show{display:grid}
+.abt-modal{
+  background:#fff;border-radius:16px;width:min(460px,100%);padding:28px;position:relative;
+  box-shadow:0 30px 70px rgba(0,0,0,.3);
+}
+.abt-modal h3{font-size:19px;color:var(--abt-ink);margin-bottom:10px}
+.abt-modal p{font-size:13.8px;color:var(--abt-muted);margin-bottom:18px}
+.abt-modal input,.abt-modal textarea{
+  width:100%;border:1px solid var(--abt-line);border-radius:9px;padding:10px 13px;
+  font-size:14px;font-family:inherit;outline:none;margin-bottom:12px;resize:vertical;
+}
+.abt-modal input:focus,.abt-modal textarea:focus{border-color:var(--abt-mint)}
+.abt-modal .abt-btn{width:100%;justify-content:center}
+.abt-modal-close{position:absolute;top:14px;right:16px;font-size:22px;color:var(--abt-muted);line-height:1}
+.abt-share-row{display:flex;gap:10px;flex-wrap:wrap}
+.abt-share-row button{flex:1;min-width:90px;background:var(--abt-mint-soft);color:var(--abt-ink);font-size:13px;font-weight:700;padding:10px;border-radius:9px;transition:.2s}
+.abt-share-row button:hover{background:var(--abt-mint)}
+
+@media(max-width:1000px){
+  .abt-hero-grid{grid-template-columns:1fr;gap:34px}
+  .abt-focus-grid{grid-template-columns:1fr}
+  .abt-grid-3,.abt-topics,.abt-stories,.abt-reviews,.abt-board{grid-template-columns:repeat(2,1fr)}
+  .abt-creators{grid-template-columns:repeat(2,1fr)}
+  .abt-partners{grid-template-columns:repeat(3,1fr)}
+  .abt-footer-grid{grid-template-columns:1fr 1fr}
+  .abt-contact{grid-template-columns:1fr}
+}
+@media(max-width:780px){
+  .abt-nav{
+    position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;
+    padding:10px 16px 18px;gap:2px;border-bottom:1px solid var(--abt-line);
+    box-shadow:0 20px 30px rgba(15,42,46,.1);display:none;
+  }
+  .abt-nav.abt-open{display:flex}
+  .abt-search{display:none}
+  .abt-header .abt-wrap{height:62px;justify-content:space-between;position:relative}
+  .abt-burger{display:block}
+  .abt-grid-3,.abt-topics,.abt-stories,.abt-reviews,.abt-board{grid-template-columns:1fr}
+  .abt-creators{grid-template-columns:1fr 1fr}
+  .abt-vcard.abt-h{flex-direction:column}
+  .abt-vcard.abt-h .abt-cover{width:100%}
+  .abt-notice .abt-wrap{flex-wrap:wrap}
+  .abt-hero{padding:44px 0 40px}
+  .abt-section{padding:52px 0}
+  .abt-footer-grid{grid-template-columns:1fr}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="abt-sticky">
+  <div class="abt-notice">
+    <div class="abt-wrap">
+      <span class="abt-notice-tag">官方公告</span>
+      <div class="abt-notice-track">
+        <div class="abt-notice-text">蚂蚁bt搜索「资源标签规范化」第二期正式上线，<b>新增 1,280 组检索标签</b>，创作者投稿入口同步开放 · 11月18日</div>
+      </div>
+    </div>
+  </div>
+  <header class="abt-header">
+    <div class="abt-wrap">
+      <a class="abt-logo" href="#abt-home">
+        <span class="abt-logo-mark">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 30h14v8H14zM36 30h14v8H36zM30 18h4v28h-4z" fill="#35d0b0"/><circle cx="32" cy="32" r="6" fill="#f2b544"/></svg>
+        </span>
+        蚂蚁bt搜索
+      </a>
+      <nav class="abt-nav" id="abt-nav">
+        <a href="#abt-home" class="abt-active">首页</a>
+        <a href="#abt-focus">焦点内容</a>
+        <a href="#abt-flow">视频流</a>
+        <a href="#abt-topics">专题企划</a>
+        <a href="#abt-creators">创作者</a>
+        <a href="#abt-about">品牌解析</a>
+        <a href="#abt-contact">联系投稿</a>
+      </nav>
+      <form class="abt-search" id="abt-search" onsubmit="return false;">
+        <input type="text" id="abt-search-input" placeholder="搜索资源、教程、创作者" aria-label="站内搜索">
+        <button type="button" id="abt-search-btn">检索</button>
+      </form>
+      <button class="abt-burger" id="abt-burger" aria-label="展开导航">☰</button>
+    </div>
+  </header>
+</div>
+
+<main>
+  <!-- 首屏 -->
+  <section class="abt-hero" id="abt-home">
+    <div class="abt-wrap">
+      <div class="abt-hero-grid">
+        <div>
+          <span class="abt-eyebrow"><span></span>官方网站 · 企业级视频品牌</span>
+          <h1 class="abt-h1">蚂蚁bt搜索</h1>
+          <p class="abt-hero-slogan">让每一次资源检索，都变成一次清晰的发现</p>
+          <p class="abt-hero-desc">作为深耕资源检索与数字内容领域的原创视频品牌，我们以专业策展与高清影像，把分散的信息整理成可被理解、可被复用的知识资产，为创作者与企业搭建值得信赖的内容生态。</p>
+          <div class="abt-hero-actions">
+            <a class="abt-btn abt-btn-primary" href="#abt-flow">探索精品内容</a>
+            <a class="abt-btn abt-btn-ghost" href="#abt-creators">认识创作者</a>
+            <a class="abt-btn abt-btn-ghost" href="#abt-about">品牌故事</a>
+          </div>
+          <div class="abt-hero-stats">
+            <div class="abt-stat"><b id="abt-num-1">0</b><span>原创影像累计</span></div>
+            <div class="abt-stat"><b id="abt-num-2">0</b><span>认证创作者</span></div>
+            <div class="abt-stat"><b id="abt-num-3">0</b><span>检索标签覆盖</span></div>
+          </div>
+        </div>
+        <div class="abt-hero-visual">
+          <div class="abt-frame">
+            <svg viewBox="0 0 800 500" role="img" aria-label="蚂蚁bt搜索品牌主视觉：资源检索与影像发现">
+              <defs>
+                <linearGradient id="abtG1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#0f2a2e"/><stop offset=".6" stop-color="#123b40"/><stop offset="1" stop-color="#1d5a56"/>
+                </linearGradient>
+                <linearGradient id="abtG2" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#35d0b0"/><stop offset="1" stop-color="#f2b544"/>
+                </linearGradient>
+              </defs>
+              <rect width="800" height="500" fill="url(#abtG1)"/>
+              <g opacity=".22" stroke="#35d0b0" stroke-width="1.5">
+                <path d="M0 100h800M0 200h800M0 300h800M0 400h800"/>
+                <path d="M100 0v500M300 0v500M500 0v500M700 0v500"/>
+              </g>
+              <circle cx="580" cy="150" r="120" fill="none" stroke="url(#abtG2)" stroke-width="3" opacity=".7"/>
+              <circle cx="580" cy="150" r="70" fill="none" stroke="#35d0b0" stroke-width="2" opacity=".55"/>
+              <path d="M560 150h60M590 120v60" stroke="#f2b544" stroke-width="6" stroke-linecap="round"/>
+              <g fill="#35d0b0">
+                <rect x="90" y="290" width="150" height="14" rx="7"/>
+                <rect x="90" y="326" width="230" height="14" rx="7" opacity=".7"/>
+                <rect x="90" y="362" width="120" height="14" rx="7" opacity=".45"/>
+              </g>
+              <g fill="#f2b544" opacity=".9">
+                <circle cx="470" cy="350" r="9"/><circle cx="510" cy="350" r="9"/><circle cx="550" cy="350" r="9"/>
+              </g>
+              <rect x="90" y="410" width="200" height="40" rx="20" fill="#f2b544"/>
+              <text x="112" y="436" font-size="17" font-family="sans-serif" fill="#0f2a2e" font-weight="bold">SEARCH · CURATE</text>
+            </svg>
+          </div>
+          <div class="abt-hero-badge">
+            <i>◎</i>
+            <div>
+              <b>本周新增 168 条策展条目</b>
+              <small>来自 42 位认证创作者</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 焦点内容 -->
+  <section class="abt-section" id="abt-focus">
+    <div class="abt-wrap">
+      <div class="abt-sec-head">
+        <div>
+          <h2><small>FOCUS</small>焦点内容 · 本周策展精选</h2>
+          <p>由编辑团队与行业顾问共同挑选，聚焦资源检索的真实方法论与幕后实践。</p>
+        </div>
+        <a class="abt-link-more" href="#abt-flow">查看全部视频流 →</a>
+      </div>
+      <div class="abt-focus-grid">
+        <article class="abt-vcard">
+          <div class="abt-cover">
+            <img alt="焦点视频封面：一位策划人在深夜整理资源库标签的桌面场景" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230f2a2e'/%3E%3Cstop offset='1' stop-color='%23216b63'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='450' fill='url(%23a)'/%3E%3Crect x='70' y='90' width='380' height='250' rx='12' fill='%23e9f7f2' opacity='.94'/%3E%3Crect x='100' y='120' width='150' height='12' rx='6' fill='%230f2a2e'/%3E%3Crect x='100' y='150' width='300' height='9' rx='4' fill='%2335d0b0'/%3E%3Crect x='100' y='176' width='250' height='9' rx='4' fill='%2335d0b0' opacity='.6'/%3E%3Crect x='100' y='202' width='280' height='9' rx='4' fill='%2335d0b0' opacity='.4'/%3E%3Crect x='100' y='250' width='90' height='30' rx='15' fill='%23f2b544'/%3E%3Ccircle cx='620' cy='160' r='70' fill='none' stroke='%23f2b544' stroke-width='6'/%3E%3Cpath d='M670 210l50 50' stroke='%23f2b544' stroke-width='12' stroke-linecap='round'/%3E%3C/svg%3E">
+            <span class="abt-cover-tag">焦点访谈</span>
+            <span class="abt-play" aria-hidden="true"></span>
+          </div>
+          <div class="abt-vbody">
+            <h3>资源检索的第一性原理：从「找东西」到「建立自己的信息地图」</h3>
+            <p style="font-size:13.5px;color:var(--abt-muted)">我们用一集 28 分钟的深度影像，拆解检索标签体系的搭建逻辑，以及一个内容团队如何把零散资源沉淀为可协作的知识库。</p>
+            <div class="abt-vmeta">
+              <span>蚂蚁bt搜索 编辑部</span><span class="abt-dot"></span><span>2026-11-16</span><span class="abt-dot"></span><span>1.8 万次播放</span>
+            </div>
+            <div class="abt-vtags"><span>资源策展</span><span>信息管理</span><span>方法论</span></div>
+            <div class="abt-actions">
+              <button class="abt-act abt-like" data-count="1824">👍 <b>1,824</b></button>
+              <button class="abt-act abt-save">☆ 收藏</button>
+              <button class="abt-act abt-copy">🔗 分享</button>
+            </div>
+          </div>
+        </article>
+        <div class="abt-side-list">
+          <article class="abt-vcard abt-h">
+            <div class="abt-cover">
+              <img alt="视频封面：标签规范化的双屏对照演示画面" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Crect width='800' height='500' fill='%23eef5f3'/%3E%3Crect x='40' y='60' width='330' height='380' rx='10' fill='%23ffffff' stroke='%23dde6e4' stroke-width='3'/%3E%3Crect x='430' y='60' width='330' height='380' rx='10' fill='%230f2a2e'/%3E%3Cg fill='%2335d0b0'%3E%3Crect x='70' y='100' width='120' height='10' rx='5'/%3E%3Crect x='70' y='140' width='250' height='10' rx='5' opacity='.6'/%3E%3Crect x='70' y='180' width='200' height='10' rx='5' opacity='.4'/%3E%3Crect x='70' y='220' width='270' height='10' rx='5' opacity='.3'/%3E%3C/g%3E%3Cg fill='%23f2b544'%3E%3Crect x='460' y='100' width='120' height='10' rx='5'/%3E%3Crect x='460' y='140' width='250' height='10' rx='5' opacity='.7'/%3E%3Crect x='460' y='180' width='180' height='10' rx='5' opacity='.5'/%3E%3Crect x='460' y='220' width='230' height='10' rx='5' opacity='.35'/%3E%3C/g%3E%3C/svg%3E">
+              <span class="abt-cover-tag">教程</span>
+            </div>
+            <div class="abt-vbody">
+              <h3>标签规范化实操：让资源库从「能搜到」到「搜得准」</h3>
+              <div class="abt-vmeta"><span>林知远</span><span class="abt-dot"></span><span>9,612 播放</span></div>
+              <div class="abt-actions">
+                <button class="abt-act abt-like" data-count="742">👍 <b>742</b></button>
+                <button class="abt-act abt-save">☆ 收藏</button>
+              </div>
+            </div>
+          </article>
+          <article class="abt-vcard abt-h">
+            <div class="abt-cover">
+              <img alt="视频封面：城市夜景中创作者手持设备记录检索笔记" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Crect width='800' height='500' fill='%23123b40'/%3E%3Ccircle cx='640' cy='110' r='55' fill='%23f2b544' opacity='.85'/%3E%3Cg fill='%23216b63'%3E%3Crect x='60' y='250' width='90' height='190'/%3E%3Crect x='165' y='200' width='70' height='240'/%3E%3Crect x='250' y='290' width='110' height='150'/%3E%3Crect x='375' y='230' width='80' height='210'/%3E%3Crect x='470' y='300' width='120' height='140'/%3E%3C/g%3E%3Cg fill='%2335d0b0' opacity='.75'%3E%3Crect x='75' y='270' width='20' height='20'/%3E%3Crect x='115' y='300' width='20' height='20'/%3E%3Crect x='185' y='225' width='20' height='20'/%3E%3Crect x='390' y='255' width='20' height='20'/%3E%3Crect x='500' y='325' width='20' height='20'/%3E%3C/g%3E%3C/svg%3E">
+              <span class="abt-cover-tag">城市探索</span>
+            </div>
+            <div class="abt-vbody">
+              <h3>在四座城市的旧书店里，寻找被遗忘的目录索引</h3>
+              <div class="abt-vmeta"><span>苏晓野</span><span class="abt-dot"></span><span>1.1 万播放</span></div>
+              <div class="abt-actions">
+                <button class="abt-act abt-like" data-count="1036">👍 <b>1,036</b></button>
+                <button class="abt-act abt-save">☆ 收藏</button>
+              </div>
+            </div>
+          </article>
+          <article class="abt-vcard abt-h">
+            <div class="abt-cover">
+              <img alt="视频封面：团队白板前讨论内容生态结构的工作场景" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Crect width='800' height='500' fill='%23f6f8f7'/%3E%3Crect x='60' y='70' width='680' height='360' rx='12' fill='%23ffffff' stroke='%23dde6e4' stroke-width='3'/%3E%3Cg stroke='%2335d0b0' stroke-width='4' fill='none'%3E%3Ccircle cx='220' cy='250' r='42'/%3E%3Ccircle cx='400' cy='170' r='42'/%3E%3Ccircle cx='400' cy='330' r='42'/%3E%3Ccircle cx='580' cy='250' r='42'/%3E%3Cpath d='M260 232l98-42M260 268l98 42M442 190l98 42M442 310l98-42'/%3E%3C/g%3E%3Cg fill='%230f2a2e' font-family='sans-serif' font-size='15' text-anchor='middle'%3E%3Ctext x='220' y='257' fill='%230f2a2e'%3E采集%3C/text%3E%3Ctext x='400' y='177' fill='%230f2a2e'%3E标签%3C/text%3E%3Ctext x='400' y='337' fill='%230f2a2e'%3E审核%3C/text%3E%3Ctext x='580' y='257' fill='%230f2a2e'%3E分发%3C/text%3E%3C/g%3E%3C/svg%3E">
+              <span class="abt-cover-tag">行业观察</span>
+            </div>
+            <div class="abt-vbody">
+              <h3>内容生态的四层结构：采集、标签、审核与分发</h3>
+              <div class="abt-vmeta"><span>陈叙白</span><span class="abt-dot"></span><span>8,304 播放</span></div>
+              <div class="abt-actions">
+                <button class="abt-act abt-like" data-count="615">👍 <b>615</b></button>
+                <button class="abt-act abt-save">☆ 收藏</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 视频流 -->
+  <section class="abt-section abt-alt" id="abt-flow">
+    <div class="abt-wrap">
+      <div class="abt-sec-head">
+        <div>
+          <h2><small>VIDEO FLOW</small>热门视频流</h2>
+          <p>持续更新的原创与策展内容，涵盖教程、访谈、测评与城市记录。所有条目均经人工复核，保证可追溯与可复用。</p>
+        </div>
+        <a class="abt-link-more" href="#abt-topics">进入专题区 →</a>
+      </div>
+      <div class="abt-grid-3">
+        <article class="abt-vcard">
+          <div class="abt-cover">
+            <img alt="视频封面：手写笔记与检索关键词卡片铺满桌面" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23e5efe9'/%3E%3Cg fill='%23ffffff' stroke='%23cfdcd8' stroke-width='2'%3E%3Crect x='60' y='60' width='200' height='120' rx='8' transform='rotate(-4 160 120)'/%3E%3Crect x='300' y='90' width='230' height='140' rx='8' transform='rotate(3 415 160)'/%3E%3Crect x='480' y='50' width='240' height='110' rx='8' transform='rotate(-2 600 105)'/%3E%3Crect x='140' y='250' width='260' height='130' rx='8' transform='rotate(2 270 315)'/%3E%3Crect x='450' y='230' width='250' height='150' rx='8' transform='rotate(-3 575 305)'/%3E%3C/g%3E%3Cg fill='%2335d0b0'%3E%3Crect x='90' y='90' width='110' height='9' rx='4'/%3E%3Crect x='90' y='115' width='80' height='9' rx='4' opacity='.6'/%3E%3Crect x='335' y='125' width='140' height='9' rx='4'/%3E%3Crect x='335' y='150' width='100' height='9' rx='4' opacity='.6'/%3E%3Crect x='515' y='85' width='150' height='9' rx='4'/%3E%3Crect x='180' y='290' width='160' height='9' rx='4'/%3E%3Crect x='180' y='315' width='120' height='9' rx='4' opacity='.6'/%3E%3Crect x='490' y='270' width='160' height='9' rx='4'/%3E%3Crect x='490' y='295' width='110' height='9' rx='4' opacity='.6'/%3E%3C/g%3E%3C/svg%3E">
+            <span class="abt-cover-tag">实用技巧</span><span class="abt-play"></span>
+          </div>
+          <div class="abt-vbody">
+            <h3>七个检索句式，把模糊需求变成精准结果</h3>
+            <p style="font-size:13px;color:var(--abt-muted)">从限定符到组合检索，逐一演示真实场景下的效率差异。</p>
+            <div class="abt-vmeta"><span>林知远</span><span class="abt-dot"></span><span>2.3 万播放</span></div>
+            <div class="abt-vtags"><span>检索技巧</span><span>效率工具</span></div>
+            <div class="abt-actions">
+              <button class="abt-act abt-like" data-count="2140">👍 <b>2,140</b></button>
+              <button class="abt-act abt-save">☆ 收藏</button>
+              <button class="abt-act abt-copy">🔗 分享</button>
+            </div>
+          </div>
+        </article>
+        <article class="abt-vcard">
+          <div class="abt-cover">
+            <img alt="视频封面：旧档案柜与胶片盒堆叠的复古影像" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%232b2a24'/%3E%3Cg fill='%234d4636'%3E%3Crect x='50' y='80' width='150' height='310' rx='6'/%3E%3Crect x='220' y='130' width='150' height='260' rx='6'/%3E%3Crect x='390' y='60' width='160' height='330' rx='6'/%3E%3Crect x='570' y='110' width='180' height='280' rx='6'/%3E%3C/g%3E%3Cg fill='%23c8a25a'%3E%3Crect x='70' y='100' width='110' height='8' rx='4'/%3E%3Crect x='70' y='140' width='90' height='8' rx='4' opacity='.7'/%3E%3Crect x='240' y='155' width='110' height='8' rx='4'/%3E%3Crect x='410' y='85' width='120' height='8' rx='4'/%3E%3Crect x='410' y='125' width='90' height='8' rx='4' opacity='.7'/%3E%3Crect x='590' y='135' width='140' height='8' rx='4'/%3E%3C/g%3E%3Ccircle cx='680' cy='340' r='56' fill='none' stroke='%23c8a25a' stroke-width='6' opacity='.8'/%3E%3C/svg%3E">
+            <span class="abt-cover-tag">文化访谈</span><span class="abt-play"></span>
+          </div>
+          <div class="abt-vbody">
+            <h3>档案管理员的一天：把无序资料变成可检索的记忆</h3>
+            <p style="font-size:13px;color:var(--abt-muted)">一次关于归档、编号与分类的安静访谈，慢节奏但信息密度极高。</p>
+            <div class="abt-vmeta"><span>苏晓野</span><span class="abt-dot"></span><span>9,870 播放</span></div>
+            <div class="abt-vtags"><span>人物访谈</span><span>在地文化</span></div>
+            <div class="abt-actions">
+              <button class="abt-act abt-like" data-count="876">👍 <b>876</b></button>
+              <button class="abt-act abt-save">☆ 收藏</button>
+              <button class="abt-act abt-copy">🔗 分享</button>
+            </div>
+          </div>
+        </article>
+        <article class="abt-vcard">
+          <div class="abt-cover">
+            <img alt="视频封面：多屏并排对比不同资源库的界面测评" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%230f2a2e'/%3E%3Cg stroke='%2335d0b0' stroke-width='3' fill='%231a444a'%3E%3Crect x='50' y='70' width='210' height='300' rx='8'/%3E%3Crect x='290' y='70' width='210' height='300' rx='8'/%3E%3Crect x='530' y='70' width='210' height='300' rx='8'/%3E%3C/g%3E%3Cg fill='%23f2b544'%3E%3Crect x='70' y='100' width='90' height='9' rx='4'/%3E%3Crect x='310' y='100' width='120' height='9' rx='4'/%3E%3Crect x='550' y='100' width='80' height='9' rx='4'/%3E%3C/g%3E%3Cg fill='%2335d0b0' opacity='.6'%3E%3Crect x='70' y='140' width='160' height='9' rx='4'/%3E%3Crect x='70' y='170' width='130' height='9' rx='4'/%3E%3Crect x='310' y='140' width='160' height='9' rx='4'/%3E%3Crect x='310' y='170' width='110' height='9' rx='4'/%3E%3Crect x='550' y='140' width='150' height='9' rx='4'/%3E%3Crect x='550' y='170' width='140' height='9' rx='4'/%3E%3C/g%3E%3C/svg%3E">
+            <span class="abt-cover-tag">深度测评</span><span class="abt-play"></span>
+          </div>
+          <div class="abt-vbody">
+            <h3>三款主流资源库横向测评：响应速度、标签体系与协作能力</h3>
+            <p style="font-size:13px;color:var(--abt-muted)">用统一测试样本，跑完 24 项指标，给出可对照的结论表。</p>
+            <div class="abt-vmeta"><span>陈叙白</span><span class="abt-dot"></span><span>1.6 万播放</span></div>
+            <div class="abt-vtags"><span>深度测评</span><span>行业观察</span></div>
+            <div class="abt-actions">
+              <button class="abt-act abt-like" data-count="1533">👍 <b>1,533</b></button>
+              <button class="abt-act abt-save">☆ 收藏</button>
+              <button class="abt-act abt-copy">🔗 分享</button>
+            </div>
+          </div>
+        </article>
+        <article class="abt-vcard">
+          <div class="abt-cover">
+            <img alt="视频封面：厨房台面上的手作食谱与食材特写" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23f3ece0'/%3E%3Crect x='0' y='300' width='800' height='150' fill='%23c8a25a' opacity='.35'/%3E%3Ccircle cx='250' cy='240' r='90' fill='%23e0b45c'/%3E%3Ccircle cx='250' cy='240' r='60' fill='%23f3ece0'/%3E%3Ccircle cx='250' cy='240' r='34' fill='%23c8873a'/%3E%3Cg fill='%233f6b48'%3E%3Crect x='430' y='180' width='22' height='120' rx='11'/%3E%3Crect x='470' y='160' width='22' height='140' rx='11'/%3E%3Crect x='510' y='195' width='22' height='105' rx='11'/%3E%3C/g%3E%3Crect x='560' y='230' width='150' height='90' rx='10' fill='%23ffffff' stroke='%23d9cbb3' stroke-width='3'/%3E%3C/svg%3E">
+            <span class="abt-cover-tag">美食烹饪</span><span class="abt-play"></span>
+          </div>
+          <div class="abt-vbody">
+            <h3>给内容团队的深夜食堂：四道十分钟快手菜</h3>
+            <p style="font-size:13px;color:var(--abt-muted)">加班剪辑后的治愈系记录，顺带附上食材索引清单。</p>
+            <div class="abt-vmeta"><span>顾南禾</span><span class="abt-dot"></span><span>1.2 万播放</span></div>
+            <div class="abt-vtags"><span>日常记录</span><span>治愈影像</span></div>
+            <div class="abt-actions">
+              <button class="abt-act abt-like" data-count="1102">👍 <b>1,102</b></button>
+              <button class="abt-act abt-save">☆ 收藏</button>
+              <button class="abt-act abt-copy">🔗 分享</button>
+            </div>
+          </div>
+        </article>
+        <article class="abt-vcard">
+          <div class="abt-cover">
+            <img alt="视频封面：剪辑软件时间轴与素材标签面板特写" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23182b33'/%3E%3Crect x='40' y='60' width='720' height='200' rx='8' fill='%230f2027' stroke='%2335d0b0' stroke-width='2'/%3E%3Cg fill='%2335d0b0'%3E%3Crect x='60' y='90' width='120' height='42' rx='5' opacity='.8'/%3E%3Crect x='195' y='90' width='70' height='42' rx='5' opacity='.5'/%3E%3Crect x='280' y='90' width='150' height='42' rx='5' opacity='.7'/%3E%3Crect x='445' y='90' width='90' height='42' rx='5' opacity='.4'/%3E%3C/g%3E%3Cg fill='%23f2b544'%3E%3Crect x='40' y='290' width='720' height='90' rx='8' opacity='.15'/%3E%3Crect x='70' y='315' width='180' height='38' rx='5'/%3E%3Crect x='270' y='315' width='120' height='38' rx='5' opacity='.8'/%3E%3Crect x='410' y='315' width='210' height='38' rx='5' opacity='.6'/%3E%3C/g%3E%3C/svg%3E">
+            <span class="abt-cover-tag">创作幕后</span><span class="abt-play"></span>
+          </div>
+          <div class="abt-vbody">
+            <h3>一条 8 分钟视频的素材整理全流程（附标签模板）</h3>
+            <p style="font-size:13px;color:var(--abt-muted)">从拍摄清单到成片归档，完整展示可复用的工作流。</p>
+            <div class="abt-vmeta"><span>周衍</span><span class="abt-dot"></span><span>2.8 万播放</span></div>
+            <div class="abt-vtags"><span>创作幕后</span><span>教程干货</span></div>
+            <div class="abt-actions">
+              <button class="abt-act abt-like" data-count="2860">👍 <b>2,860</b></button>
+              <button class="abt-act abt-save">☆ 收藏</button>
+              <button class="abt-act abt-copy">🔗 分享</button>
+            </div>
+          </div>
+        </article>
+        <article class="abt-vcard">
+          <div class="abt-cover">
+            <img alt="视频封面：山野晨雾中的徒步者与背包" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23dbe9e2'/%3E%3Cpath d='M0 340l180-160 150 120 130-90 200 160 140-100v210H0z' fill='%234c7a63'/%3E%3Cpath d='M0 380l200-120 160 90 150-70 290 140v40H0z' fill='%232f5546'/%3E%3Ccircle cx='640' cy='120' r='46' fill='%23f2b544' opacity='.9'/%3E%3Cpath d='M300 330l40-70 40 70z' fill='%23e5efe9'/%3E%3Cg stroke='%23e5efe9' stroke-width='4' opacity='.6'%3E%3Cpath d='M60 300h140M100 330h180M480 310h160'/%3E%3C/g%3E%3C/svg%3E">
+            <span class="abt-cover-tag">户外活动</span><span class="abt-play"></span>
+          </div>
+          <div class="abt-vbody">
+            <h3>断网两天：一次不带设备的徒步与手写记录实验</h3>
+            <p style="font-size:13px;color:var(--abt-muted)">离开检索工具之后，人是如何重新组织信息的。</p>
+            <div class="abt-vmeta"><span>苏晓野</span><span class="abt-dot"></span><span>1.4 万播放</span></div>
+            <div class="abt-vtags"><span>户外活动</span><span>生活方式</span></div>
+            <div class="abt-actions">
+              <button class="abt-act abt-like" data-count="1258">👍 <b>1,258</b></button>
+              <button class="abt-act abt-save">☆ 收藏</button>
+              <button class="abt-act abt-copy">🔗 分享</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 专题 -->
+  <section class="abt-section" id="abt-topics">
+    <div class="abt-wrap">
+      <div class="abt-sec-head">
+        <div>
+          <h2><small>SPECIAL</small>专题企划</h2>
+          <p>以主题串联内容，围绕资源检索与内容治理展开的长期企划，持续更新中。</p>
+        </div>
+      </div>
+      <div class="abt-topics">
+        <a class="abt-topic" href="#abt-flow">
+          <img alt="专题封面：城市天际线与检索网格叠加的构图" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23123b40'/%3E%3Cg fill='%23216b63'%3E%3Crect x='40' y='180' width='70' height='220'/%3E%3Crect x='130' y='130' width='60' height='270'/%3E%3Crect x='210' y='220' width='90' height='180'/%3E%3Crect x='320' y='160' width='70' height='240'/%3E%3Crect x='410' y='240' width='100' height='160'/%3E%3Crect x='530' y='190' width='50' height='210'/%3E%3C/g%3E%3Cg stroke='%2335d0b0' stroke-width='2' opacity='.5'%3E%3Cpath d='M0 120h600M0 240h600M0 360h600M150 0v400M300 0v400M450 0v400'/%3E%3C/g%3E%3C/svg%3E">
+          <span class="abt-topic-state">更新至 12 期</span>
+          <h3>城市检索计划</h3>
+          <p>走进 12 座城市，记录当地人如何整理与检索身边的资源。</p>
+        </a>
+        <a class="abt-topic" href="#abt-flow">
+          <img alt="专题封面：书架与彩色标签卡片排列的暖色画面" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23f3ece0'/%3E%3Crect x='40' y='60' width='520' height='40' rx='6' fill='%23c8a25a'/%3E%3Crect x='40' y='160' width='520' height='40' rx='6' fill='%23c8a25a' opacity='.8'/%3E%3Crect x='40' y='260' width='520' height='40' rx='6' fill='%23c8a25a' opacity='.6'/%3E%3Cg%3E%3Crect x='60' y='110' width='40' height='45' fill='%23d9534f'/%3E%3Crect x='110' y='110' width='40' height='45' fill='%2335d0b0'/%3E%3Crect x='160' y='110' width='40' height='45' fill='%230f2a2e'/%3E%3Crect x='210' y='110' width='40' height='45' fill='%23f2b544'/%3E%3Crect x='260' y='110' width='40' height='45' fill='%234c7a63'/%3E%3C/g%3E%3C/svg%3E">
+          <span class="abt-topic-state">连载中</span>
+          <h3>标签里的小宇宙</h3>
+          <p>四分钟微纪录片系列，讲述一个个标签背后的分类哲学。</p>
+        </a>
+        <a class="abt-topic" href="#abt-flow">
+          <img alt="专题封面：深色背景中的搜索放大镜与数据光点" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%230f2a2e'/%3E%3Cg fill='%2335d0b0' opacity='.55'%3E%3Ccircle cx='80' cy='80' r='5'/%3E%3Ccircle cx='180' cy='300' r='4'/%3E%3Ccircle cx='420' cy='90' r='6'/%3E%3Ccircle cx='520' cy='280' r='5'/%3E%3Ccircle cx='300' cy='200' r='4'/%3E%3C/g%3E%3Ccircle cx='300' cy='200' r='96' fill='none' stroke='%23f2b544' stroke-width='8'/%3E%3Cpath d='M370 270l70 70' stroke='%23f2b544' stroke-width='16' stroke-linecap='round'/%3E%3C/svg%3E">
+          <span class="abt-topic-state">已完结 · 8 集</span>
+          <h3>检索的边界</h3>
+          <p>关于信息获取伦理与技术边界的一档深度对谈节目。</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 创作者 -->
+  <section class="abt-section abt-alt" id="abt-creators">
+    <div class="abt-wrap">
+      <div class="abt-sec-head">
+        <div>
+          <h2><small>CREATORS</small>创作者矩阵</h2>
+          <p>来自内容、技术、文化等不同背景的创作者，共同构成蚂蚁bt搜索的内容生态。</p>
+        </div>
+      </div>
+      <div class="abt-creators">
+        <div class="abt-creator" data-author="林知远" data-desc="检索策略研究者，专注标签体系设计与信息组织，已更新 46 期教程。">
+          <div class="abt-avatar" style="background:linear-gradient(135deg,#123b40,#35d0b0)">林</div>
+          <h3>林知远</h3>
+          <div class="abt-field">检索策略</div>
+          <p>擅长把复杂的检索逻辑拆成可执行的小步骤。</p>
+          <div class="abt-cstat"><span><b>46</b>作品</span><span><b>8.6万</b>关注</span></div>
+        </div>
+        <div class="abt-creator" data-author="苏晓野" data-desc="城市影像记录者，走遍四十余座城市的旧书市与档案馆，擅长慢叙事">
+          <div class="abt-avatar" style="background:linear-gradient(135deg,#c8873a,#f2b544)">苏</div>
+          <h3>苏晓野</h3>
+          <div class="abt-field">城市探索</div>
+          <p>用镜头记录城市中被忽略的资料与角落。</p>
+          <div class="abt-cstat"><span><b>38</b>作品</span><span><b>7.2万</b>关注</span></div>
+        </div>
+        <div class="abt-creator" data-author="陈叙白" data-desc="内容行业观察者，长期追踪内容治理与平台机制，输出理性分析">
+          <div class="abt-avatar" style="background:linear-gradient(135deg,#0f2a2e,#4c7a63)">陈</div>
+          <h3>陈叙白</h3>
+          <div class="abt-field">行业观察</div>
+          <p>专注内容生态与平台机制的结构化分析。</p>
+          <div class="abt-cstat"><span><b>52</b>作品</span><span><b>9.1万</b>关注</span></div>
+        </div>
+        <div class="abt-creator" data-author="周衍" data-desc="自由剪辑师，分享从拍摄到归档的完整幕后流程，强调可复用工作流">
+          <div class="abt-avatar" style="background:linear-gradient(135deg,#3c4f8a,#7a9bd6)">周</div>
+          <h3>周衍</h3>
+          <div class="abt-field">创作幕后</div>
+          <p>剪辑师，热衷分享可复用的素材管理流程。</p>
+          <div class="abt-cstat"><span><b>61</b>作品</span><span><b>6.4万</b>关注</span></div>
+        </div>
+        <div class="abt-creator" data-author="顾南禾" data-desc="生活方式影像作者，关注厨房、日常与治愈系记录，节奏温柔">
+          <div class="abt-avatar" style="background:linear-gradient(135deg,#d9534f,#f2b544)">顾</div>
+          <h3>顾南禾</h3>
+          <div class="abt-field">生活记录</div>
+          <p>拍摄厨房与日常，关注慢节奏的生活质感。</p>
+          <div class="abt-cstat"><span><b>34</b>作品</span><span><b>5.8万</b>关注</span></div>
+        </div>
+        <div class="abt-creator" data-author="何未" data-desc="独立开发者，分享检索工具与自动化脚本的实操经验，注重实用性">
+          <div class="abt-avatar" style="background:linear-gradient(135deg,#4c7a63,#35d0b0)">何</div>
+          <h3>何未</h3>
+          <div class="abt-field">工具实践</div>
+          <p>独立开发者，常写检索自动化与效率脚本。</p>
+          <div class="abt-cstat"><span><b>29</b>作品</span><span><b>4.3万</b>关注</span></div>
+        </div>
+        <div class="abt-creator" data-author="沈青禾" data-desc="艺术纪录片作者，关注影像美学与叙事结构，擅长视觉化呈现抽象概念">
+          <div class="abt-avatar" style="background:linear-gradient(135deg,#7a6a9b,#c9b6e4)">沈</div>
+          <h3>沈青禾</h3>
+          <div class="abt-field">艺术美学</div>
+          <p>以影像表达抽象概念，作品强调构图与节奏。</p>
+          <div class="abt-cstat"><span><b>23</b>作品</span><span><b>3.9万</b>关注</span></div>
+        </div>
+        <div class="abt-creator" data-author="罗与之" data-desc="资深产品人，讲解内容社区的产品设计与用户研究方法，案例扎实">
+          <div class="abt-avatar" style="background:linear-gradient(135deg,#123b40,#7a9bd6)">罗</div>
+          <h3>罗与之</h3>
+          <div class="abt-field">产品设计</div>
+          <p>讲解内容产品的设计逻辑与用户研究方法。</p>
+          <div class="abt-cstat"><span><b>41</b>作品</span><span><b>6.9万</b>关注</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 故事 -->
+  <section class="abt-section" id="abt-stories">
+    <div class="abt-wrap">
+      <div class="abt-sec-head">
+        <div>
+          <h2><small>STORIES</small>故事与随笔</h2>
+          <p>视频之外，创作者用文字补充那些镜头没有说完的部分。</p>
+        </div>
+      </div>
+      <div class="abt-stories">
+        <article class="abt-story">
+          <h3>第一次给整柜资料做索引的那个周末</h3>
+          <p>我花了整整两天，把家里三大箱旧杂志按主题、年份和关键词重新编号。最初以为只是体力活，做到一半才明白，索引其实是在替未来的自己写一封备忘录。</p>
+          <div class="abt-smeta">林知远 · 创作手记</div>
+        </article>
+        <article class="abt-story">
+          <h3>在旧书店二楼，我发现了一本手写目录</h3>
+          <p>老板说那是上世纪八十年代一位常客留下的，用铅笔写了三十多页。每一行都标着书名与页码，字迹工整得像印刷体。那一刻我意识到，检索从来不是新问题。</p>
+          <div class="abt-smeta">苏晓野 · 城市笔记</div>
+        </article>
+        <article class="abt-story">
+          <h3>我们为什么决定把标签规则公开</h3>
+          <p>规则公开意味着可以被讨论、被质疑、被修正。这并不轻松，但我们相信，一个值得信赖的内容平台，应该让它的判断标准被看见。</p>
+          <div class="abt-smeta">蚂蚁bt搜索 编辑部 · 品牌随笔</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 评价 + 榜单 -->
+  <section class="abt-section abt-alt" id="abt-reviews">
+    <div class="abt-wrap">
+      <div class="abt-sec-head">
+        <div>
+          <h2><small>VOICES</small>用户口碑与数据榜单</h2>
+          <p>来自社区的真实反馈，以及每周更新的内容热度参考。</p>
+        </div>
+      </div>
+      <div class="abt-reviews" style="margin-bottom:32px">
+        <article class="abt-review">
+          <div class="abt-rhead">
+            <div class="abt-avatar" style="background:linear-gradient(135deg,#35d0b0,#123b40)">周</div>
+            <div><b>周礼</b><small>内容运营 · 使用 14 个月</small></div>
+          </div>
+          <div class="abt-stars">★★★★★</div>
+          <p>标签体系是我见过最清晰的之一。我们团队直接照着它的分类逻辑重构了内部素材库，新人上手时间从两周缩短到三天。</p>
+        </article>
+        <article class="abt-review">
+          <div class="abt-rhead">
+            <div class="abt-avatar" style="background:linear-gradient(135deg,#f2b544,#c8873a)">许</div>
+            <div><b>许一舟</b><small>独立纪录片导演</small></div>
+          </div>
+          <div class="abt-stars">★★★★☆</div>
+          <p>影像的质感很稳，不浮躁。最喜欢城市检索计划那种慢节奏，看完会想去翻翻自己硬盘里被遗忘的素材。</p>
+        </article>
+        <article class="abt-review">
+          <div class="abt-rhead">
+            <div class="abt-avatar" style="background:linear-gradient(135deg,#7a9bd6,#3c4f8a)">邓</div>
+            <div><b>邓青</b><small>高校图书馆员</small></div>
+          </div>
+          <div class="abt-stars">★★★★★</div>
+          <p>把档案管理讲得这么有人情味，挺难得的。已经在课堂上放了两期，学生反馈说比教材好懂。</p>
+        </article>
+        <article class="abt-review">
+          <div class="abt-rhead">
+            <div class="abt-avatar" style="background:linear-gradient(135deg,#d9534f,#f2b544)">梁</div>
+            <div><b>梁思远</b><small>自由撰稿人</small></div>
+          </div>
+          <div class="abt-stars">★★★★☆</div>
+          <p>希望多出一些检索效率的短教程，单集 8 分钟左右刚刚好，通勤路上正好看完一期。</p>
+        </article>
+        <article class="abt-review">
+          <div class="abt-rhead">
+            <div class="abt-avatar" style="background:linear-gradient(135deg,#4c7a63,#35d0b0)">曾</div>
+            <div><b>曾小南</b><small>产品经理</small></div>
+          </div>
+          <div class="abt-stars">★★★★★</div>
+          <p>专题企划的策划水平在线，不是简单堆内容。每期都有明确的观点，这点在同类平台里很少见。</p>
+        </article>
+        <article class="abt-review">
+          <div class="abt-rhead">
+            <div class="abt-avatar" style="background:linear-gradient(135deg,#c9b6e4,#7a6a9b)">白</div>
+            <div><b>白露</b><small>视觉设计师</small></div>
+          </div>
+          <div class="abt-stars">★★★★☆</div>
+          <p>界面颜色舒服，深绿配薄荷绿不刺眼。作为品牌官网，信息密度控制得不错，找东西不费劲。</p>
+        </article>
+      </div>
+      <div class="abt-board">
+        <div class="abt-board-card">
+          <h3>本周热度榜 <span>更新于 11-18</span></h3>
+          <div class="abt-rank"><i>1</i><b>七个检索句式</b><em>2.3万</em></div>
+          <div class="abt-rank"><i>2</i><b>素材整理全流程</b><em>2.8万</em></div>
+          <div class="abt-rank"><i>3</i><b>三款资源库测评</b><em>1.6万</em></div>
+          <div class="abt-rank"><i>4</i><b>断网两天实验</b><em>1.4万</em></div>
+          <div class="abt-rank"><i>5</i><b>档案管理员的一天</b><em>9,870</em></div>
+        </div>
+        <div class="abt-board-card">
+          <h3>新人榜 <span>本月入选</span></h3>
+          <div class="abt-rank"><i>1</i><b>何未 · 工具实践</b><em>29 作品</em></div>
+          <div class="abt-rank"><i>2</i><b>沈青禾 · 艺术美学</b><em>23 作品</em></div>
+          <div class="abt-rank"><i>3</i><b>罗与之 · 产品设计</b><em>41 作品</em></div>
+          <div class="abt-rank"><i>4</i><b>顾南禾 · 生活记录</b><em>34 作品</em></div>
+          <div class="abt-rank"><i>5</i><b>白露 · 视觉叙事</b><em>18 作品</em></div>
+        </div>
+        <div class="abt-board-card">
+          <h3>口碑榜 <span>用户评分</span></h3>
+          <div class="abt-rank"><i>1</i><b>城市检索计划</b><em>4.9 分</em></div>
+          <div class="abt-rank"><i>2</i><b>检索的边界</b><em>4.8 分</em></div>
+          <div class="abt-rank"><i>3</i><b>标签里的小宇宙</b><em>4.8 分</em></div>
+          <div class="abt-rank"><i>4</i><b>创作幕后系列</b><em>4.7 分</em></div>
+          <div class="abt-rank"><i>5</i><b>城市笔记随笔</b><em>4.7 分</em></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 品牌解析 -->
+  <section class="abt-about" id="abt-about">
+    <div class="abt-wrap">
+      <div class="abt-about-inner">
+        <div class="abt-sub">BRAND INSIGHT</div>
+        <h2>关于蚂蚁bt搜索：一个以检索为方法的内容品牌</h2>
+        <p>蚂蚁bt搜索官方网站不是一个简单的聚合页面，而是一个围绕「检索」这一行为展开的视频内容品牌。我们相信，在信息极度丰富的时代，真正稀缺的不是资源本身，而是把资源组织成可被理解的结构的能力。因此，我们把镜头对准那些整理者、归档者、策展人与创作者，记录他们如何为杂乱的信息赋予秩序。作为一家持续运营的企业级内容平台，我们以专业策展、高清影像和严格的人工复核为底座，为个人创作者与品牌方搭建值得信赖的内容生态。</p>
+
+        <h3>一、品牌定位：资源检索领域的专业影像表达者</h3>
+        <p>在大众印象里，检索往往意味着输入关键词、点击搜索结果这样机械的动作。但蚂蚁bt搜索认为，检索是一种主动的认知行为，它包含目标拆解、路径选择与结果判断。基于这一判断，我们把品牌定位为垂直领域的内容策展方：不做泛化的资讯堆砌，而是围绕资源检索、信息组织与内容治理三个方向，持续输出原创影像与教程。平台已形成焦点内容、视频流、专题企划、创作者矩阵四层内容结构，每个层级承担不同的信息密度与观看节奏，既满足深度用户的研究需求，也照顾到初次接触的用户。</p>
+
+        <h3>二、内容生态：从单条视频到可复用的知识结构</h3>
+        <p>内容生态的建设是一个长期过程。我们在内部推行「采集—标签—复核—分发」四段式流程：采集阶段强调来源可追溯，标签阶段强调粒度一致，复核阶段强调人工判断不可替代，分发阶段强调场景匹配。正因如此，你会看到我们的视频标题往往带有具体的限定词，描述里说明适用场景，标签体系则保持长期稳定。我们希望每一期内容在被看过之后，依然能在用户需要时被重新找到。这种可检索性，正是精品内容区别于一次性信息的关键。</p>
+
+        <h3>三、创作者关系：陪伴与成长的双向过程</h3>
+        <p>蚂蚁bt搜索的社区由一群对信息秩序有执念的人组成。有人是图书馆员，有人是剪辑师，有人是产品经理，也有人只是喜欢整理自己硬盘的普通用户。我们为他们提供统一的标签规范、清晰的分发规则和透明的数据反馈，也定期举办创作挑战与主题征集，让新的表达方式有机会被看见。品牌与创作者之间不是简单的发布与承载关系，而是共同成长的关系：创作者在平台上获得专业反馈，平台也在创作者的实践中持续校准自己的内容标准。这种包容与多元，构成了我们口碑的基础。</p>
+
+        <h3>四、品质与责任：值得信赖来自可被检验的细节</h3>
+        <p>作为一个面向公众的视频品牌，我们始终把品质放在首位。所有焦点内容在发布前都要经过至少两轮复核，涉及引用信息的条目需标注来源；合作品牌内容会明确标识；用户反馈会在三个工作日内响应。我们深知，值得信赖不是一句口号，而是由无数个可被检验的细节累积而成。与此同时，我们也关注内容行业的社会责任，通过公开标签规则、发布内容治理年度观察等方式，推动行业讨论走向更理性的方向。</p>
+
+        <h3>五、未来方向：让检索被更多人理解</h3>
+        <p>未来一年，蚂蚁bt搜索将继续深耕垂直领域内容，计划推出面向教育工作者的资源整理课程、面向中小团队的素材管理方案，以及更多城市在地记录项目。我们也将持续优化站内的检索体验，让官网本身成为品牌理念的一次实践。我们相信，当更多人意识到检索是一种可以学习、可以精进的能力时，内容生态的整体品质也会随之提升。蚂蚁bt搜索愿意做那个耐心的记录者与组织者，与创作者、用户和合作伙伴一起，把这件事做得更久一点。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 动态 + 合作 + FAQ -->
+  <section class="abt-section" id="abt-updates">
+    <div class="abt-wrap">
+      <div class="abt-sec-head">
+        <div>
+          <h2><small>UPDATES</small>企业动态与常见问题</h2>
+          <p>官方发布、内容更新与合作信息，都在这里同步。</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:start" class="abt-updates-grid">
+        <div>
+          <div class="abt-timeline">
+            <div class="abt-tl-item">
+              <time>2026-11-18</time>
+              <h3>「资源标签规范化」第二期上线</h3>
+              <p>新增 1,280 组检索标签，覆盖教育、影像、设计等 9 个方向，创作者投稿入口同步开放。</p>
+            </div>
+            <div class="abt-tl-item">
+              <time>2026-11-10</time>
+              <h3>城市检索计划第 12 期发布</h3>
+              <p>本季收官之作走进西南山区的一座县级图书馆，记录基层资料整理的日常。</p>
+            </div>
+            <div class="abt-tl-item">
+              <time>2026-10-29</time>
+              <h3>创作者扶持计划开放报名</h3>
+              <p>面向资源整理、教程讲解方向的内容创作者，提供制作支持与流量扶持，报名截止 12 月 15 日。</p>
+            </div>
+            <div class="abt-tl-item">
+              <time>2026-10-12</time>
+              <h3>与三家公共文化机构达成内容合作</h3>
+              <p>合作内容将围绕地方文献数字化与公众教育展开，首批影像预计于明年初陆续发布。</p>
+            </div>
+          </div>
+          <h3 style="font-size:16px;color:var(--abt-ink);margin:28px 0 14px">合作品牌与伙伴</h3>
+          <div class="abt-partners">
+            <div class="abt-partner">青石档案馆</div>
+            <div class="abt-partner">南岭书店联盟</div>
+            <div class="abt-partner">拾光影像</div>
+            <div class="abt-partner">索引实验室</div>
+            <div class="abt-partner">城市笔记社</div>
+          </div>
+        </div>
+        <div class="abt-faq">
+          <details open>
+            <summary>蚂蚁bt搜索的内容主要围绕什么主题？</summary>
+            <p>我们聚焦资源检索、信息组织与内容治理三个方向，涵盖检索技巧教程、深度测评、人物访谈、城市记录与创作幕后等题材。所有内容都强调可追溯与可复用，避免一次性信息。</p>
+          </details>
+          <details>
+            <summary>如何成为平台认证创作者？</summary>
+            <p>在「联系投稿」区提交你的作品方向与代表作品链接，编辑团队会在五个工作日内回复。通过初筛后，我们会提供统一的标签规范与内容指引，并安排一次线上沟通。</p>
+          </details>
+          <details>
+            <summary>平台的内容复核流程是怎样的？</summary>
+            <p>焦点内容至少经过两轮人工复核，涉及引用信息需标注来源。合作类内容会明确标识，用户反馈在三个工作日内响应。我们公开标签规则，也欢迎用户对判断标准提出讨论。</p>
+          </details>
+          <details>
+            <summary>视频是否支持引用与二次创作？</summary>
+            <p>站内原创内容在标注来源与作者的前提下，可用于非商业的教育与讨论场景。商业用途需提前联系品牌方获得书面授权，我们会根据具体场景给出建议。</p>
+          </details>
+          <details>
+            <summary>如何获取每周更新的内容清单？</summary>
+            <p>在页面底部的订阅入口留下邮箱，即可每周收到一次内容清单，包含新上线的视频、专题更新与创作者动态。我们不发送与内容无关的推广信息。</p>
+          </details>
+          <details>
+            <summary>平台是否接受机构合作？</summary>
+            <p>接受。我们与文化机构、教育单位、内容团队保持长期合作，合作形式包括联合策划、内容共建与影像制作支持。请在联系表单中说明合作意图与机构背景。</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section class="abt-section abt-alt" id="abt-contact">
+    <div class="abt-wrap">
+      <div class="abt-contact">
+        <div>
+          <h2>联系与投稿</h2>
+          <p>无论你想分享一条检索心得、提交一部作品，还是洽谈品牌合作，我们都乐意听到你的声音。蚂蚁bt搜索始终坚持用户至上的原则，认真对待每一封来信。</p>
+          <div class="abt-contact-list">
+            <div><span>投稿邮箱</span>creator@mayibt.example</div>
+            <div><span>合作咨询</span>partner@mayibt.example</div>
+            <div><span>媒体联络</span>press@mayibt.example</div>
+            <div><span>响应时间</span>工作日 3 个工作日内回复</div>
+            <div><span>办公地址</span>华东 · 内容创作中心（预约制）</div>
+          </div>
+          <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+            <button class="abt-btn abt-btn-primary" id="abt-open-submit">提交投稿意向</button>
+            <button class="abt-btn abt-btn-ghost" id="abt-open-report">反馈与举报</button>
+            <button class="abt-btn abt-btn-ghost" id="abt-open-share">分享本页</button>
+          </div>
+        </div>
+        <div class="abt-cta-box">
+          <h3>订阅每周内容清单</h3>
+          <p>每周一发送，包含新上线视频、专题更新与创作者动态，可随时退订。</p>
+          <input type="email" id="abt-sub-email" placeholder="请输入你的邮箱地址" aria-label="订阅邮箱">
+          <button id="abt-sub-btn">立即订阅</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="abt-footer">
+  <div class="abt-wrap">
+    <div class="abt-footer-grid">
+      <div>
+        <a class="abt-logo" href="#abt-home">
+          <span class="abt-logo-mark">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 30h14v8H14zM36 30h14v8H36zM30 18h4v28h-4z" fill="#0f2a2e"/><circle cx="32" cy="32" r="6" fill="#f2b544"/></svg>
+          </span>
+          蚂蚁bt搜索
+        </a>
+        <p>蚂蚁bt搜索官方网站，深耕资源检索与数字内容垂直领域。以原创、高清、专业的内容与稳定的标签体系，为创作者与企业搭建值得信赖的内容生态，持续运营，长期陪伴。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#abt-focus">焦点内容</a></li>
+          <li><a href="#abt-flow">热门视频流</a></li>
+          <li><a href="#abt-topics">专题企划</a></li>
+          <li><a href="#abt-creators">创作者矩阵</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>品牌信息</h4>
+        <ul>
+          <li><a href="#abt-about">品牌解析</a></li>
+          <li><a href="#abt-updates">企业动态</a></li>
+          <li><a href="#abt-reviews">用户口碑</a></li>
+          <li><a href="#abt-contact">联系投稿</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>官方发布</h4>
+        <ul>
+          <li><a href="#abt-updates">更新日志</a></li>
+          <li><a href="#abt-updates">合作品牌</a></li>
+          <li><a href="#abt-updates">常见问题</a></li>
+          <li><a href="#abt-contact">订阅清单</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="abt-footer-bottom">
+      <span>© 2026 蚂蚁bt搜索 官方网站 · 版权所有 · 持续运营中</span>
+      <span>品牌主体：蚂蚁bt搜索内容工作室 | 内容备案：CN-CONTENT-2026-118</span>
+    </div>
+  </div>
+</footer>
+
+<button class="abt-top" id="abt-top" aria-label="回到顶部">↑</button>
+<div class="abt-toast" id="abt-toast"></div>
+
+<div class="abt-mask" id="abt-mask">
+  <div class="abt-modal" id="abt-modal">
+    <button class="abt-modal-close" id="abt-modal-close" aria-label="关闭">×</button>
+    <h3 id="abt-modal-title">提示</h3>
+    <p id="abt-modal-desc"></p>
+    <div id="abt-modal-body"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var toastEl = document.getElementById('abt-toast');
+  var toastTimer = null;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('abt-show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('abt-show'); }, 2200);
+  }
+
+  /* 移动端导航 */
+  var burger = document.getElementById('abt-burger');
+  var nav = document.getElementById('abt-nav');
+  burger.addEventListener('click', function(){
+    nav.classList.toggle('abt-open');
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('abt-open');
+      nav.querySelectorAll('a').forEach(function(x){ x.classList.remove('abt-active'); });
+      a.classList.add('abt-active');
+    });
+  });
+
+  /* 搜索反馈 */
+  var searchInput = document.getElementById('abt-search-input');
+  var searchBtn = document.getElementById('abt-search-btn');
+  var searchTip = null;
+  function ensureTip(){
+    if(!searchTip){
+      searchTip = document.createElement('div');
+      searchTip.className = 'abt-search-tip';
+      searchInput.parentNode.parentNode.appendChild(searchTip);
+    }
+    return searchTip;
+  }
+  function doSearch(){
+    var kw = (searchInput.value || '').trim();
+    var tip = ensureTip();
+    if(!kw){
+      tip.textContent = '请输入关键词，例如「标签」「检索」「测评」「城市」。';
+      tip.classList.add('abt-show');
+      return;
+    }
+    tip.textContent = '正在站内检索「' + kw + '」：已匹配到相关视频流与创作者条目，可在下方内容区查看结果反馈。';
+    tip.classList.add('abt-show');
+    toast('已为「' + kw + '」完成前端筛选提示');
+    var flow = document.getElementById('abt-flow');
+    if(flow){ flow.scrollIntoView({behavior:'smooth', block:'start'}); }
+  }
+  searchBtn.addEventListener('click', doSearch);
+  searchInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); doSearch(); }
+  });
+
+  /* 点赞 */
+  document.querySelectorAll('.abt-like').forEach(function(btn){
+    var base = parseInt(btn.getAttribute('data-count'), 10) || 0;
+    var liked = false;
+    btn.addEventListener('click', function(){
+      liked = !liked;
+      var num = liked ? base + 1 : base;
+      btn.innerHTML = '👍 <b>' + num.toLocaleString('en-US') + '</b>';
+      btn.classList.toggle('abt-on', liked);
+      toast(liked ? '已点赞，感谢你的支持' : '已取消点赞');
+    });
+  });
+
+  /* 收藏 */
+  document.querySelectorAll('.abt-save').forEach(function(btn){
+    var saved = false;
+    btn.addEventListener('click', function(){
+      saved = !saved;
+      btn.textContent = saved ? '♥ 已收藏' : '☆ 收藏';
+      btn.classList.toggle('abt-saved', saved);
+      toast(saved ? '已加入收藏夹' : '已取消收藏');
+    });
+  });
+
+  /* 分享 / 复制 */
+  function copyText(text, okMsg){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){ toast(okMsg); })
+      .catch(function(){ toast('复制失败，请手动选择链接'); });
+    } else {
+      toast(okMsg);
+    }
+  }
+  document.querySelectorAll('.abt-copy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      copyText(window.location.href.split('#')[0], '链接已复制，可分享给朋友');
+    });
+  });
+
+  /* 创作者弹窗 */
+  document.querySelectorAll('.abt-creator').forEach(function(card){
+    card.addEventListener('click', function(){
+      var name = card.getAttribute('data-author') || '创作者';
+      var desc = card.getAttribute('data-desc') || '';
+      openModal(name, desc + ' 欢迎关注该创作者，查看其全部作品与近期动态。', '<button class="abt-btn abt-btn-primary" id="abt-follow-btn">关注该创作者</button>');
+      var f = document.getElementById('abt-follow-btn');
+      if(f){
+        f.addEventListener('click', function(){
+          f.textContent = '已关注';
+          f.style.background = '#35d0b0';
+          f.style.color = '#0f2a2e';
+          toast('已关注 ' + name);
+        });
+      }
+    });
+  });
+
+  /* Modal 基础 */
+  var mask = document.getElementById('abt-mask');
+  var modalTitle = document.getElementById('abt-modal-title');
+  var modalDesc = document.getElementById('abt-modal-desc');
+  var modalBody = document.getElementById('abt-modal-body');
+  function openModal(title, desc, bodyHtml){
+    modalTitle.textContent = title;
+    modalDesc.textContent = desc || '';
+    modalBody.innerHTML = bodyHtml || '';
+    mask.classList.add('abt-show');
+  }
+  function closeModal(){ mask.classList.remove('abt-show'); }
+  document.getElementById('abt-modal-close').addEventListener('click', closeModal);
+  mask.addEventListener('click', function(e){ if(e.target === mask){ closeModal(); } });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ closeModal(); } });
+
+  /* 投稿 */
+  document.getElementById('abt-open-submit').addEventListener('click', function(){
+    openModal('提交投稿意向',
+      '留下你的联系方式与作品方向，编辑团队会在五个工作日内回复。',
+      '<input type="text" id="abt-sub-name" placeholder="你的称呼或创作者昵称">' +
+      '<input type="email" id="abt-sub-mail" placeholder="联系邮箱">' +
+      '<textarea id="abt-sub-note" rows="3" placeholder="简要说明作品方向与代表作品链接"></textarea>' +
+      '<button class="abt-btn abt-btn-primary" id="abt-sub-send">提交意向</button>');
+    document.getElementById('abt-sub-send').addEventListener('click', function(){
+      var name = (document.getElementById('abt-sub-name').value || '').trim();
+      var mail = (document.getElementById('abt-sub-mail').value || '').trim();
+      if(!name || !mail || mail.indexOf('@') < 0){
+        toast('请填写称呼与有效邮箱');
+        return;
+      }
+      closeModal();
+      toast('投稿意向已记录，编辑团队将尽快联系你');
+    });
+  });
+
+  /* 举报反馈 */
+  document.getElementById('abt-open-report').addEventListener('click', function(){
+    openModal('反馈与举报',
+      '我们重视每一条反馈，内容问题将在三个工作日内处理。',
+      '<textarea id="abt-report-note" rows="4" placeholder="请描述你遇到的问题，例如内容标注、引用来源或体验建议"></textarea>' +
+      '<button class="abt-btn abt-btn-primary" id="abt-report-send">提交反馈</button>');
+    document.getElementById('abt-report-send').addEventListener('click', function(){
+      var note = (document.getElementById('abt-report-note').value || '').trim();
+      if(!note){ toast('请先填写反馈内容'); return; }
+      closeModal();
+      toast('反馈已提交，感谢你帮助平台变得更好');
+    });
+  });
+
+  /* 分享 */
+  document.getElementById('abt-open-share').addEventListener('click', function(){
+    openModal('分享本页',
+      '把蚂蚁bt搜索官方网站分享给同样关注资源检索的朋友。',
+      '<div class="abt-share-row">' +
+      '<button data-share="微信">微信</button>' +
+      '<button data-share="微博">微博</button>' +
+      '<button data-share="QQ">QQ</button>' +
+      '<button data-share="链接">复制链接</button>' +
+      '</div>');
+    modalBody.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click', function(){
+        var ch = b.getAttribute('data-share');
+        if(ch === '链接'){
+          copyText(window.location.href.split('#')[0], '链接已复制');
+        } else {
+          toast('已生成「' + ch + '」分享提示');
+        }
+        closeModal();
+      });
+    });
+  });
+
+  /* 订阅 */
+  document.getElementById('abt-sub-btn').addEventListener('click', function(){
+    var v = (document.getElementById('abt-sub-email').value || '').trim();
+    if(!v || v.indexOf('@') < 0){
+      toast('请输入有效的邮箱地址');
+      return;
+    }
+    document.getElementById('abt-sub-email').value = '';
+    toast('订阅成功，每周一发送内容清单');
+  });
+
+  /* 回到顶部 */
+  var topBtn = document.getElementById('abt-top');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 500){ topBtn.classList.add('abt-show'); }
+    else { topBtn.classList.remove('abt-show'); }
+  });
+  topBtn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* 数字滚动 */
+  function animateNum(el, target, suffix){
+    var start = 0, dur = 1200, t0 = null;
+    function step(t){
+      if(!t0) t0 = t;
+      var p = Math.min((t - t0) / dur, 1);
+      var val = Math.floor(start + (target - start) * (1 - Math.pow(1 - p, 3)));
+      el.textContent = val.toLocaleString('en-US') + (suffix || '');
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = target.toLocaleString('en-US') + (suffix || '');
+    }
+    requestAnimationFrame(step);
+  }
+  var started = false;
+  function startCounters(){
+    if(started) return;
+    started = true;
+    animateNum(document.getElementById('abt-num-1'), 1860, '+');
+    animateNum(document.getElementById('abt-num-2'), 42, ' 位');
+    animateNum(document.getElementById('abt-num-3'), 1280, '+');
+  }
+  window.addEventListener('scroll', function(){
+    var hero = document.getElementById('abt-home');
+    if(hero && window.scrollY > 80){ startCounters(); }
+  });
+  setTimeout(startCounters, 900);
+})();
+</script>
+</body>
+              </html>
